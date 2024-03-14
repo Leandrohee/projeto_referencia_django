@@ -1,0 +1,17 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.cabecalho{
+    font-size: 50px;
+    margin: 10px auto;
+}
+
+.quadrado-vermelho{
+    width: 500px;
+    height: 20px;
+    background-color: red;
+    color: white;
+    margin: 10px auto;
+}

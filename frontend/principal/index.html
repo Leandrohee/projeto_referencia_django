@@ -1,0 +1,15 @@
+{% load static %}                                                                       <!-- load static eh uma Biblioteca nativa do django-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css_pagina_principal/styles.css' %}">       <!-- coloco o caminho relativo a partir da 'frontend/static' essa pasta eu defini no settings.py na parte STATICFILES_DIRS-->
+</head>
+<body>
+    <h1 class="cabecalho">Aqui está um arquivo html</h1>
+    <div class="quadrado-vermelho">Aqui esta uma div com fundo vermelho</div>
+</body>
+</html>
