@@ -1,17 +1,82 @@
-*{
+* {
     padding: 0;
     margin: 0;
 }
 
-.cabecalho{
-    font-size: 50px;
+.div-cabecalho {
+    display: flex;
+    justify-content: center;
     margin: 10px auto;
+    width: fit-content;
 }
 
-.quadrado-vermelho{
+.cabecalho {
+    font-size: 50px;
+}
+
+.quadrado-vermelho {
     width: 500px;
     height: 20px;
     background-color: red;
     color: white;
     margin: 10px auto;
+    text-align: center;
+}
+
+.link-pedido{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.link-pedido:hover{
+    color: red;
+}
+
+.table {
+    border-collapse: collapse;
+    border-color: #93a1a1;
+    border-spacing: 0;
+    width: 70%;
+    margin: 100px auto;
+    text-align: center;
+}
+
+.table td {
+    background-color: #fdf6e3;
+    border-style: solid;
+    border-width: 1px;
+    color: #002b36;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    overflow: hidden;
+    padding: 10px 5px;
+    width: 20%;
+}
+
+.table th {
+    text-align: center;
+    background-color: #657b83;
+    border-color: #93a1a1;
+    border-style: solid;
+    border-width: 1px;
+    color: #fdf6e3;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    overflow: hidden;
+    padding: 10px 5px;
+    word-break: normal;
+}
+
+.table .tg-mxz8 {
+    background-color: #eee8d5;
+    border-color: #000000;
+    color: #333333;
+    vertical-align: center;
+}
+
+.table .tg-on52 {
+    border-color: #000000;
+    color: #333333;
+    vertical-align: center;
 }

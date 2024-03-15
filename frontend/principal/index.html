@@ -9,7 +9,31 @@
     <link rel="stylesheet" href="{% static 'css_pagina_principal/styles.css' %}">       <!-- coloco o caminho relativo a partir da 'frontend/static' essa pasta eu defini no settings.py na parte STATICFILES_DIRS-->
 </head>
 <body>
-    <h1 class="cabecalho">Aqui está um arquivo html</h1>
-    <div class="quadrado-vermelho">Aqui esta uma div com fundo vermelho</div>
+    <div class="div-cabecalho">
+        <h1 class="cabecalho">Pedidos de peças | OFICINA</h1>
+    </div>
+    <div class="quadrado-vermelho">Aqui esta uma div com fundo vermelho </div>
+    <div class="tabela-pedidos">
+        <table class="table">
+            <thead>
+              <tr>
+                <th class="tg-on52">PEDIDO</th>
+                <th class="tg-on52">OFICINA</th>
+                <th class="tg-on52">O.S</th>
+                <th class="tg-on52">PREFIXO</th>
+                <th class="tg-on52">MODELO</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="tg-mxz8"> <a class="link-pedido" href="{% url 'pedido' %}">103</a></td>          <!--Codigo python. Primeiro escrever url e depois entre aspas o name do arquivo que colocamos no urls.py-->>
+                <td class="tg-mxz8">Gasolina</td>
+                <td class="tg-mxz8">1130/2024</td>
+                <td class="tg-mxz8">ASM-10</td>
+                <td class="tg-mxz8">Hilux</td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

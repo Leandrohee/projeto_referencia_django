@@ -7,4 +7,7 @@ def renderizandoSimplesHtml(request):                                           
     return HttpResponse('<h1>Deu certo!!</h1><p>Aqui esta um html simples</p>')
 
 def renderizandoUmArquivoHtml(request):                                                     #fiz uma funcao que ira renderizar um arquivo .html
-    return render(request, 'principal/index.html')                                                    #para ele conseguer ler o arquivo index.html o caminho da pasta dele deve ser configurada no settings.py na aba DIRS
+    return render(request, 'principal/index.html')                                          #para ele conseguer ler o arquivo index.html o caminho da pasta dele deve ser configurada no settings.py na aba DIRS
+
+def renderizandoPedidosIndividuais(request):                                                #renderiza o html referente a um pedido
+    return render(request,'principal/pedido.html')

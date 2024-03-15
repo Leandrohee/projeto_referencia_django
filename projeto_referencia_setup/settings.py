@@ -107,7 +107,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'                                                                           # Url que o django vai mostrar
-STATIC_ROOT = os.path.join(BASE_DIR,"staticfiles")                                               # O django cria automaticamento, nao intendi direito
+STATIC_ROOT = os.path.join(BASE_DIR,"staticfiles_django")                                         # O django cria automaticamento, nao intendi direito
 STATICFILES_DIRS = [os.path.join(BASE_DIR,"frontend/static")]                                    # Esse eh o caminho dos arquivos estaticos (css, imagens, javascript)
 
 # Default primary key field type

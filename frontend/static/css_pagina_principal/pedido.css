@@ -1,0 +1,35 @@
+.pedido-de-peca{
+    border-collapse: collapse;
+    border-color: #93a1a1;
+    border-spacing: 0;
+    width: 70%;
+    text-align: center;
+    margin: 100px auto;
+}
+
+.pedido-de-peca td {
+    background-color: #fdf6e3;
+    border-style: solid;
+    border-width: 1px;
+    color: #002b36;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    overflow: hidden;
+    padding: 10px 5px;
+    width: 20%;
+}
+
+.pedido-de-peca  th {
+    text-align: center;
+    background-color: #657b83;
+    border-color: #93a1a1;
+    border-style: solid;
+    border-width: 1px;
+    color: #fdf6e3;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    overflow: hidden;
+    padding: 10px 5px;
+    word-break: normal;
+}
