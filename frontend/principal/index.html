@@ -25,13 +25,15 @@
               </tr>
             </thead>
             <tbody>
+              {% for pedido_enviado in pedidos_enviados %}                                                                          <!--O pedido_id contem a chave|id da instancia Pedido no db. pedido_enviado eh o item referente a esta chave|id -->
               <tr>
-                <td class="tg-mxz8"> <a class="link-pedido" href="{% url 'pedido' %}">103</a></td>          <!--Codigo python. Primeiro escrever url e depois entre aspas o name do arquivo que colocamos no urls.py-->>
-                <td class="tg-mxz8">Gasolina</td>
-                <td class="tg-mxz8">1130/2024</td>
-                <td class="tg-mxz8">ASM-10</td>
-                <td class="tg-mxz8">Hilux</td>
+                <td class="tg-mxz8"> <a class="link-pedido" href="{% url 'pedido' %}">{{ pedido_enviado.pedido }}</a></td>          <!--Codigo python. Primeiro escrever url e depois entre aspas o name do arquivo que colocamos no urls.py-->
+                <td class="tg-mxz8">{{ pedido_enviado.oficina }}</td>
+                <td class="tg-mxz8">{{ pedido_enviado.os }}</td>
+                <td class="tg-mxz8">{{ pedido_enviado.prefixo }}</td>
+                <td class="tg-mxz8">{{ pedido_enviado.modelo }}</td>
               </tr>
+              {% endfor %}
             </tbody>
         </table>
     </div>

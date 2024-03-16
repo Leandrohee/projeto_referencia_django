@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>PAGINA TESTE, ESTE HTML NAO TEM CSS</h1>
+    <h3>Esse Html eh para simular envio de dados pelo view sem a necessidade de banco de dados</h3>
+    <p></p>
+    <table>
+        <thead>
+            <tr>
+              <th class="cabecalho nome">NOME</th>
+              <th class="cabecalho idade">IDADE</th>
+            </tr>
+          </thead>
+        <tbody>
+            {% for dado_id, dado_enviado in dados_enviados.items %}                                     <!--O dado_id contem a chave|id do dicionario,  ou seja o numero  que eu setei na constante dados em view.py. dado_enviado eh o item referente a esta chave|id -->
+            <tr>                                                                                        <!--Com o comando for acima ele percorre todos os dados da constante dados que eu criei  e vai colocando uma por uma no html-->
+                <td class="dados-nome">{{ dado_enviado.nome}}</td>
+                <td class="dados-idade">{{ dado_enviado.idade}}</td>
+            </tr>
+            {% endfor %}                                                                                <!-- toda vez que  for usar for do python  dentro de um html usar o  end pra esse for-->
+        </tbody>
+    </table>
+</body>
+</html>
