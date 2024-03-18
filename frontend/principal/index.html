@@ -6,13 +6,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css_pagina_principal/styles.css' %}">       <!-- coloco o caminho relativo a partir da 'frontend/static' essa pasta eu defini no settings.py na parte STATICFILES_DIRS-->
+    <link rel="stylesheet" href="{% static 'css_pagina_principal/styles.css' %}">                                   <!-- coloco o caminho relativo a partir da 'frontend/static' essa pasta eu defini no settings.py na parte STATICFILES_DIRS-->
 </head>
 <body>
     <div class="div-cabecalho">
         <h1 class="cabecalho">Pedidos de peças | OFICINA</h1>
     </div>
-    <div class="quadrado-vermelho">Aqui esta uma div com fundo vermelho </div>
+    <div class="container-de-busca">
+      <form method="get" action="{% url 'buscar' %}">                                                               <!--MUITO IMPORTANTE COLOCAR O METHOD GET QUE ENVIARA A INFORMACAO PARA A PAGINA HTML BUSCAR-->>
+        <input class="input-busca" type="text" placeholder="Digite sua busca..." name="input-buscar">               <!--ESSE NAME TB EH MUITO IMPORTANTE PQ EH O NOME QUE APARECE NA URL-->
+        <button class="btn" type="submit" value="buscar">Buscar</button>
+      </form>
+    </div>
     <div class="tabela-pedidos">
         <table class="table">
             <thead>

@@ -14,13 +14,55 @@
     font-size: 50px;
 }
 
-.quadrado-vermelho {
-    width: 500px;
+.container-de-busca{
+    width: 80%;
     height: 20px;
-    background-color: red;
     color: white;
     margin: 10px auto;
     text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-de-busca form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-busca{
+    padding: 5px 30px;
+    margin: 0 5px;;
+}
+
+.btn{
+font-family: Roboto, sans-serif;
+font-weight: 100;
+font-size: 14px;
+color: #fff;
+background: linear-gradient(90deg, #0066CC 0%, #8100cc 100%);
+padding: 5px 30px;
+border: 2px solid #0066cc;
+box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+border-radius: 50px;
+transition : 1000ms;
+transform: translateY(0);
+display: flex;
+flex-direction: row;
+align-items: center;
+cursor: pointer;
+text-transform: lowercase;
+
+}
+
+.btn:hover{
+transition : 1000ms;
+padding: 10px 50px;
+transform : translateY(-0px);
+background: linear-gradient(90deg, #0066CC 0%, #8100cc 100%);
+color: #ffb300;
+border: solid 2px #0066cc;
+
 }
 
 .link-pedido{
