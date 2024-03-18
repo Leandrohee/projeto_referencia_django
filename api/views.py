@@ -1,15 +1,16 @@
 #Eh nesse arquivo que sao enviadas as informacoes para renderizacao seja em html, texto simples, json ou qualquer outra funcao
 
-from django.shortcuts import render,get_object_or_404                                       #Consigo pegar um model do Db com essa funcao
+from django.shortcuts import render                                                         #Consigo pegar um model do Db com essa funcao
 from django.http import HttpResponse                                                        #importei essa classe que eh responsavel por renderizar um html puro
 from .models import Pedido
 
 def renderizandoSimplesHtml(request):                                                       #fiz uma funcao que ira retornar um texto simples com html puro 
     return HttpResponse('<h1>Deu certo!!</h1><p>Aqui esta um html simples</p>')
 
-def renderizandoUmArquivoHtml(request):                                                     #fiz uma funcao que ira renderizar um arquivo .html
-    pedidos_do_Db = Pedido.objects.all()                                                    #pegando os dados do modelo Pedido
-    return render(request, 'principal/index.html',{"pedidos_enviados": pedidos_do_Db})      #para ele conseguer ler o arquivo index.html o caminho da pasta dele deve ser configurada no settings.py na aba DIRS
+def renderizandoUmArquivoHtml(request):                                                     #fiz uma funcao que ira renderizar um arquivo .html ***EH O PRINCIPAL DO PROJETO***
+    pedidos_do_db = Pedido.objects.all()                                                    #pegando todos os dados do modelo Pedido e envia paraa a variavel pedidos_do_db
+    pedidos_filtrados = Pedido.objects.order_by("pedido")                                   #filtrando os pedidos do banco de dados por numero do pedido
+    return render(request, 'principal/index.html',{"pedidos_enviados": pedidos_filtrados})  #para ele conseguer ler o arquivo index.html o caminho da pasta dele deve ser configurada no settings.py na aba DIRS
 
 def renderizandoPedidosIndividuais(request):                                                #renderiza o html referente a um pedido
     return render(request,'principal/pedido.html')
