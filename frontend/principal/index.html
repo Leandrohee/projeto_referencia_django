@@ -32,7 +32,7 @@
             <tbody>
               {% for pedido_enviado in pedidos_enviados %}                                                                          <!--O pedido_id contem a chave|id da instancia Pedido no db. pedido_enviado eh o item referente a esta chave|id -->
               <tr>
-                <td class="tg-mxz8"> <a class="link-pedido" href="{% url 'pedido' %}">{{ pedido_enviado.pedido }}</a></td>          <!--Codigo python. Primeiro escrever url e depois entre aspas o name do arquivo que colocamos no urls.py-->
+                <td class="tg-mxz8"> <a class="link-pedido" href="{% url 'pedido' pedido_enviado.id %}">{{ pedido_enviado.pedido }}</a></td>          <!--Codigo python. Primeiro escrever url e depois entre aspas o name do arquivo que colocamos no urls.py. o pedido_enviado.id quer dizer que estou enviando o id do elemento referente a esse pedido no banco de dados, mas temos que tb alterar a url.py e o view.py para receber esse id-->
                 <td class="tg-mxz8">{{ pedido_enviado.oficina }}</td>
                 <td class="tg-mxz8">{{ pedido_enviado.os }}</td>
                 <td class="tg-mxz8">{{ pedido_enviado.prefixo }}</td>

@@ -32,9 +32,9 @@
                 </tr>
               </thead>
               <tbody>
-                {% for pedido_enviado in pedidos_enviados %}                                                                            <!--pedidos_enviados contem todos os pedidos correspondentes filtrados em views.py -->
+                {% for pedido_enviado in pedidos_enviados %}                                                                                           <!--pedidos_enviados contem todos os pedidos correspondentes filtrados em views.py -->
                 <tr>
-                  <td class="tg-mxz8"> <a class="link-pedido" href="{% url 'pedido' %}">{{ pedido_enviado.pedido }}</a></td>          <!--Codigo python. Primeiro escrever url e depois entre aspas o name do arquivo que colocamos no urls.py-->
+                  <td class="tg-mxz8"> <a class="link-pedido" href="{% url 'pedido' pedido_enviado.id%}">{{ pedido_enviado.pedido }}</a></td>          <!--Codigo python. Primeiro escrever url e depois entre aspas o name do arquivo que colocamos no urls.py-->
                   <td class="tg-mxz8">{{ pedido_enviado.oficina }}</td>
                   <td class="tg-mxz8">{{ pedido_enviado.os }}</td>
                   <td class="tg-mxz8">{{ pedido_enviado.prefixo }}</td>

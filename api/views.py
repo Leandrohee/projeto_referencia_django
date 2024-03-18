@@ -1,6 +1,6 @@
 #Eh nesse arquivo que sao enviadas as informacoes para renderizacao seja em html, texto simples, json ou qualquer outra funcao
 
-from django.shortcuts import render                                                         #Consigo pegar um model do Db com essa funcao
+from django.shortcuts import render,get_object_or_404                                       #Consigo pegar um model do Db com essa funcao
 from django.http import HttpResponse                                                        #importei essa classe que eh responsavel por renderizar um html puro
 from .models import Pedido
 
@@ -12,8 +12,9 @@ def renderizandoUmArquivoHtml(request):                                         
     pedidos_organizados = Pedido.objects.order_by("pedido")                                 #filtrando os pedidos do banco de dados por numero do pedido
     return render(request, 'principal/index.html',{"pedidos_enviados": pedidos_organizados})    #para ele conseguer ler o arquivo index.html o caminho da pasta dele deve ser configurada no settings.py na aba DIRS
 
-def renderizandoPedidosIndividuais(request):                                                #renderiza o html referente a um pedido
-    return render(request,'principal/pedido.html')
+def renderizandoPedidosIndividuais(request,pedido_id):                                          #Esse parametro "pedido_id" tem que coincidir com o nome no url.py no path de renderizandoPedidosIndividuais
+    pedido_clicado = Pedido.objects.filter(id=pedido_id).get()                                  #filtrei para condizer com o id do pedido clicado em index.html. o id foi enviado pelo index.html para a url que passou o parametro para essa funcao em pedido_id
+    return render(request,'principal/pedido.html',{"pedidos_enviados": pedido_clicado})
 
 def renderizandoPaginaBuscar(request):                                                      #criei uma funcao que mostrara itens filtrados
     pedidos_organizados = Pedido.objects.order_by("pedido")                                 #filtrando os pedidos do banco de dados por numero do pedido
