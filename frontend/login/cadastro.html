@@ -1,5 +1,6 @@
 <!--Esse  html eh especifico para fazer cadastro de um novo usuario-->
 
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,8 +8,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css_login/cadastro.css' %}">                                               <!-- coloco o caminho relativo a partir da 'frontend/static' essa pasta eu defini no settings.py na parte STATICFILES_DIRS-->
 </head>
 <body>
-    pagina de cadastro
+    <h1 class="titulo">CADATRO DE USUARIO</h1>
+    <section class="secao-principal">
+        <nav class="menu-lateral">
+          <button class="btn-menu-lateral"><a class="link-pedido" href="{% url 'principal' %}">Home</a></button>
+          <button class="btn-menu-lateral"><a class="link-pedido" href="{% url 'login' %}">Login</a></button>
+        </nav>
+        <form class="formulario-cadastro"  action="{% url 'cadastro' %}" method="post">                                 <!--o methodo tem que ser post para os dados nao serem vazados par aurl-->
+            {% csrf_token %}                                                                                            <!--Formulario  para o cadastro-->
+            {% for field in form %}                                                                                     <!--iterando os campos criados na classe CadastroForm em forms.py-->
+                <div>
+                    <label for="{{field.id_for_label}}">{{field.label}}</label>                                         <!--o field.label puxa automaticamente a label da input que configuramos-->
+                    {{field}}                                                                                           <!--o proprio field ja eh o campo input-->
+                </div>
+            {% endfor %}    
+            <button type="submit">Cadastrar</button>
+        </form>
+    </section>
 </body>
 </html>

@@ -11,13 +11,21 @@
     <link rel="stylesheet" href="{% static 'css_login/login.css' %}">                                   <!-- coloco o caminho relativo a partir da 'frontend/static' essa pasta eu defini no settings.py na parte STATICFILES_DIRS-->
 </head>
 <body>
+    <h1>LOGIN DE USUARIO</h1>
     <section class="secao-principal">
         <nav class="menu-lateral">
           <button class="btn-menu-lateral"><a class="link-pedido" href="{% url 'principal' %}">Home</a></button>
           <button class="btn-menu-lateral"><a class="link-pedido" href="{% url 'login' %}">Login</a></button>
         </nav>
-        <form class="formulario-login">                                                                 <!--Formulario  para o login-->
-            formulario de  login
+        <form class="formulario-login" action="{% url 'login' %}" method="post">                        <!--Formulario  para o login, vai ser direcionado para a mesma pagina ao enter e o method post garante que as informoçoes nao seram enviadas na url-->
+            {% csrf_token %}                                                                            <!--tag token para garantir a seguranca de formulario-->
+            {% for field in form %}                                                                     <!--Vou iterar todos os campos criados no formulario em forms.py-->
+                <div>
+                    <label for="{{field.id_for_label}}">{{field.label}}</label>                         <!--o field.label puxa automaticamente a label da input que configuramos-->
+                    {{field}}                                                                           <!--o proprio field ja eh o campo input-->
+                </div>
+            {% endfor %}
+            <button type="submit">Logar</button>
         </form>
     </section>
     <div class="div-cadastrar">

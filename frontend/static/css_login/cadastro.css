@@ -1,4 +1,4 @@
-h1{
+.titulo{
     display: flex;
     justify-content: center;
 }
@@ -20,7 +20,7 @@ h1{
     margin: 10px;
 }
 
-.formulario-login{
+.formulario-cadastro{
     display: flex;
     flex-direction: column;
     width: 90%;
@@ -30,9 +30,6 @@ h1{
     gap: 10px;
 }
 
-.div-cadastrar{
+.campo-formulario{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin:  20px;
 }

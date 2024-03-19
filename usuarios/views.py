@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .forms import LoginForms, CadastroForms
 
-def paginaLogin(request):                                                       
-    return render(request, 'login/login.html')
+def paginaLogin(request):
+    form = LoginForms()                                                         #instanciando a variavel form com a classe LoginForms criada no forms.py
+    return render(request, 'login/login.html', {"form": form})                  #enviando o form criado para o html
 
-def paginaCadatro(request):                                                       
-    return render(request, 'login/cadastro.html')
+def paginaCadatro(request):
+    form = CadastroForms()                                                      #instanciando a variavel form com a classe CadastroForms criada no forms.py     
+    return render(request, 'login/cadastro.html', {"form": form})               #enviando o form criado para o html     
