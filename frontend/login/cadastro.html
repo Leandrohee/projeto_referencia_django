@@ -12,12 +12,17 @@
 </head>
 <body>
     <h1 class="titulo">CADATRO DE USUARIO</h1>
+    {% for message in messages %}                                                                       <!--mensagens de erro ou sucesso do views.py-->
+    <div>
+        <p id="mensagem">{{message}}</p>
+    </div>
+    {% endfor %}
     <section class="secao-principal">
         <nav class="menu-lateral">
           <button class="btn-menu-lateral"><a class="link-pedido" href="{% url 'principal' %}">Home</a></button>
           <button class="btn-menu-lateral"><a class="link-pedido" href="{% url 'login' %}">Login</a></button>
         </nav>
-        <form class="formulario-cadastro"  action="{% url 'cadastro' %}" method="post">                                 <!--o methodo tem que ser post para os dados nao serem vazados par aurl-->
+        <form class="formulario-cadastro" action="{% url 'cadastro' %}" method="POST">                                 <!--o methodo tem que ser post para os dados nao serem vazados par aurl-->
             {% csrf_token %}                                                                                            <!--Formulario  para o cadastro-->
             {% for field in form %}                                                                                     <!--iterando os campos criados na classe CadastroForm em forms.py-->
                 <div>

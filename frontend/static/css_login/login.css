@@ -36,3 +36,11 @@ h1{
     align-items: center;
     margin:  20px;
 }
+
+#mensagem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    background-color: red;
+}

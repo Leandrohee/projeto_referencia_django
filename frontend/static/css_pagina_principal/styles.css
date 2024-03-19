@@ -144,3 +144,11 @@ border: solid 2px #0066cc;
     color: #333333;
     vertical-align: center;
 }
+
+#mensagem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    background-color: red;
+}

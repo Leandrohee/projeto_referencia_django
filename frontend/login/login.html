@@ -12,6 +12,11 @@
 </head>
 <body>
     <h1>LOGIN DE USUARIO</h1>
+    {% for message in messages %}                                                                       <!--mensagens de erro ou sucesso do views.py-->
+    <div>
+        <p id="mensagem">{{message}}</p>
+    </div>
+    {% endfor %}
     <section class="secao-principal">
         <nav class="menu-lateral">
           <button class="btn-menu-lateral"><a class="link-pedido" href="{% url 'principal' %}">Home</a></button>
