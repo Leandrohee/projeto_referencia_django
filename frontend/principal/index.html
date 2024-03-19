@@ -18,7 +18,12 @@
         <button class="btn" type="submit" value="buscar">Buscar</button>
       </form>
     </div>
-    <div class="tabela-pedidos">
+    <section class="secao-principal">
+      <nav class="menu-lateral">
+        <button class="btn-menu-lateral"><a class="link-pedido" href="{% url 'principal' %}">Home</a></button>
+        <button class="btn-menu-lateral"><a class="link-pedido" href="{% url 'login' %}">Login</a></button>
+      </nav>
+      <div class="tabela-pedidos">
         <table class="table">
             <thead>
               <tr>
@@ -42,5 +47,6 @@
             </tbody>
         </table>
     </div>
+    </section>
 </body>
 </html>

@@ -1,0 +1,27 @@
+<!--Esse  html eh especifico para fazer login em um usuario-->
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css_login/login.css' %}">                                   <!-- coloco o caminho relativo a partir da 'frontend/static' essa pasta eu defini no settings.py na parte STATICFILES_DIRS-->
+</head>
+<body>
+    <section class="secao-principal">
+        <nav class="menu-lateral">
+          <button class="btn-menu-lateral"><a class="link-pedido" href="{% url 'principal' %}">Home</a></button>
+          <button class="btn-menu-lateral"><a class="link-pedido" href="{% url 'login' %}">Login</a></button>
+        </nav>
+        <form class="formulario-login">                                                                 <!--Formulario  para o login-->
+            formulario de  login
+        </form>
+    </section>
+    <div class="div-cadastrar">
+        <button><a  href="{% url 'cadastro' %}">Cadastrar</a></button>
+    </div>
+</body>
+</html>

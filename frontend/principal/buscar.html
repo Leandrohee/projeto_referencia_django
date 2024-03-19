@@ -20,29 +20,35 @@
         <button class="btn" type="submit" value="buscar">Buscar</button>
     </form>
     </div>
-    <div class="tabela-pedidos">
-        <table class="table">
-            <thead>
-                <tr>
-                  <th class="tg-on52">PEDIDO</th>
-                  <th class="tg-on52">OFICINA</th>
-                  <th class="tg-on52">O.S</th>
-                  <th class="tg-on52">PREFIXO</th>
-                  <th class="tg-on52">MODELO</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for pedido_enviado in pedidos_enviados %}                                                                                           <!--pedidos_enviados contem todos os pedidos correspondentes filtrados em views.py -->
-                <tr>
-                  <td class="tg-mxz8"> <a class="link-pedido" href="{% url 'pedido' pedido_enviado.id%}">{{ pedido_enviado.pedido }}</a></td>          <!--Codigo python. Primeiro escrever url e depois entre aspas o name do arquivo que colocamos no urls.py-->
-                  <td class="tg-mxz8">{{ pedido_enviado.oficina }}</td>
-                  <td class="tg-mxz8">{{ pedido_enviado.os }}</td>
-                  <td class="tg-mxz8">{{ pedido_enviado.prefixo }}</td>
-                  <td class="tg-mxz8">{{ pedido_enviado.modelo }}</td>
-                </tr>
-                {% endfor %}
-              </tbody>
-        </table>
-    </div>
+    <section class="secao-principal">
+      <nav class="menu-lateral">
+        <button class="btn-menu-lateral"><a class="link-pedido" href="{% url 'principal' %}">Home</a></button>
+        <button class="btn-menu-lateral">Login</button>
+      </nav>
+      <div class="tabela-pedidos">
+          <table class="table">
+              <thead>
+                  <tr>
+                    <th class="tg-on52">PEDIDO</th>
+                    <th class="tg-on52">OFICINA</th>
+                    <th class="tg-on52">O.S</th>
+                    <th class="tg-on52">PREFIXO</th>
+                    <th class="tg-on52">MODELO</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for pedido_enviado in pedidos_enviados %}                                                                                           <!--pedidos_enviados contem todos os pedidos correspondentes filtrados em views.py -->
+                  <tr>
+                    <td class="tg-mxz8"> <a class="link-pedido" href="{% url 'pedido' pedido_enviado.id%}">{{ pedido_enviado.pedido }}</a></td>          <!--Codigo python. Primeiro escrever url e depois entre aspas o name do arquivo que colocamos no urls.py-->
+                    <td class="tg-mxz8">{{ pedido_enviado.oficina }}</td>
+                    <td class="tg-mxz8">{{ pedido_enviado.os }}</td>
+                    <td class="tg-mxz8">{{ pedido_enviado.prefixo }}</td>
+                    <td class="tg-mxz8">{{ pedido_enviado.modelo }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+          </table>
+      </div>
+    </section>
 </body>
 </html>

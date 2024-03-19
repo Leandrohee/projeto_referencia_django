@@ -3,5 +3,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('api.urls'))                                       #aqui estou enviando a url vazia para o app api para que ele faça o gerenciamento dessa url vazia
+    path('', include('api.urls')),                                   #aqui estou enviando a url vazia para o app api para que ele faça o gerenciamento dessa url vazia
+    path('', include('usuarios.urls'))                                #estou enviando a url vazia para o usuarios tb
 ]

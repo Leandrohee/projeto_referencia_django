@@ -1,3 +1,26 @@
+.secao-principal{
+    display: flex;
+}
+
+.link-pedido{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.menu-lateral{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 10%;
+}
+
+.btn-menu-lateral{
+    width: 90%;
+    margin: 10px;
+}
+
+
 .pedido-de-peca{
     border-collapse: collapse;
     border-color: #93a1a1;

@@ -1,0 +1,30 @@
+.secao-principal{
+    display: flex;
+}
+
+.menu-lateral{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 10%;
+}
+
+.btn-menu-lateral{
+    width: 90%;
+    margin: 10px;
+}
+
+.formulario-login{
+    display: flex;
+    width: 90%;
+    margin: 20px;
+    justify-content: center;
+}
+
+.div-cadastrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:  20px;
+}

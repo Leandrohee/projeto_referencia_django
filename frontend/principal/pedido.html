@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="{% static 'css_pagina_principal/pedido.css' %}">       <!-- coloco o caminho relativo a partir da 'frontend/static' essa pasta eu defini no settings.py na parte STATICFILES_DIRS-->
 </head>
 <body>
+  <section class="secao-principal">
+    <nav class="menu-lateral">
+      <button class="btn-menu-lateral"><a class="link-pedido" href="{% url 'principal' %}">Home</a></button>
+      <button class="btn-menu-lateral">Login</button>
+    </nav>
     <table class="pedido-de-peca">
         <thead>
           <tr>
@@ -42,5 +47,6 @@
           </tr>
         </tbody>
     </table>
+  </section>
 </body>
 </html>

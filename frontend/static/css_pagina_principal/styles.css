@@ -65,6 +65,28 @@ border: solid 2px #0066cc;
 
 }
 
+.secao-principal{
+    display: flex;
+}
+
+.menu-lateral{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 10%;
+}
+
+.btn-menu-lateral{
+    width: 90%;
+    margin: 10px;
+}
+
+.tabela-pedidos{
+    width: 90%;
+}
+
+
 .link-pedido{
     text-decoration: none;
     cursor: pointer;
