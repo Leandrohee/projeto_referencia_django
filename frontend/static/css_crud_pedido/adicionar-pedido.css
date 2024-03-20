@@ -1,0 +1,38 @@
+h1{
+    display: flex;
+    justify-content: center;
+}
+
+.secao-principal{
+    display: flex;
+}
+
+.menu-lateral{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 10%;
+}
+
+.btn-menu-lateral{
+    width: 90%;
+    margin: 10px;
+}
+
+.link-pedido{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.formulario-add-pedido{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 90%;
+    gap: 10px;
+    margin: 0 30%;
+    padding: 10px;
+    border: 1px solid black;
+}

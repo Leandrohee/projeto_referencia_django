@@ -16,8 +16,7 @@ def renderizandoUmArquivoHtml(request):                                         
 
     pedidos_do_db = Pedido.objects.all()                                                    #pegando todos os dados do modelo Pedido e envia paraa a variavel pedidos_do_db
     pedidos_organizados = Pedido.objects.order_by("pedido")                                 #filtrando os pedidos do banco de dados por numero do pedido
-    return render(request, 'principal/index.html',{"pedidos_enviados": pedidos_organizados})    #para ele conseguer ler o arquivo index.html o caminho da pasta dele deve ser configurada no settings.py na aba DIRS
-    
+    return render(request, 'principal/index.html',{"pedidos_enviados": pedidos_organizados})    #para ele conseguer ler o arquivo index.html o caminho da pasta dele deve ser configurada no settings.py na aba DIRS  
 
 def renderizandoPedidosIndividuais(request,pedido_id):                                          #Esse parametro "pedido_id" tem que coincidir com o nome no url.py no path de renderizandoPedidosIndividuais
     pedido_clicado = Pedido.objects.filter(id=pedido_id).get()                                  #filtrei para condizer com o id do pedido clicado em index.html. o id foi enviado pelo index.html para a url que passou o parametro para essa funcao em pedido_id
@@ -52,8 +51,38 @@ def enviandoDadosSemDB(request):                                                
     return render(request, 'principal/htmlsemdb.html', {"dados_enviados": dados} )           #o terceiro parametro eh referente ao dado que eu quero enviar para o html, no caso  estou enviando um dicionario aninhado
 
 def addNovoPedido(request):
-    form = PedidoForm()
-    return render(request, 'principal/adicionar-pedido.html', {"form": form})
+
+    if request.method == 'POST':
+        form_preenchido = PedidoForm(request.POST)
+
+        if form_preenchido.is_valid():
+            pedido_prenchido = form_preenchido['pedido'].value()                                      
+            oficina_preenchida = form_preenchido['oficina'].value()                                     
+            os_preenchida = form_preenchido['os'].value()
+            prefixo_preenchido = form_preenchido['prefixo'] .value()
+            modelo_preenchido = form_preenchido['modelo'] .value()
+            data_do_pedido_preenchido = form_preenchido['data_do_pedido'] .value()
+
+            if Pedido.objects.filter(pedido=pedido_prenchido).exists():
+                return redirect('addNovoPedido')
+            
+            novo_pedido = Pedido.objects.create(
+                pedido = pedido_prenchido,
+                oficina = oficina_preenchida,                    
+                os = os_preenchida,
+                prefixo = prefixo_preenchido,
+                modelo =  modelo_preenchido,
+                data_do_pedido = data_do_pedido_preenchido
+            )
+
+            novo_pedido.save()
+            return redirect('principal')
+        
+
+    
+    if request.method == 'GET':
+        form = PedidoForm()
+        return render(request, 'principal/adicionar-pedido.html', {"form": form})
 
 def editandoPedido(request):
     pass
