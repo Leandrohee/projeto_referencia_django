@@ -39,8 +39,12 @@ h1{
 
 #mensagem{
     display: flex;
+    text-align: center;
+    font-weight: bold;
+    color: white;
     justify-content: center;
     align-items: center;
+    margin: 5px auto;
     width: 100px;
     background-color: red;
 }

@@ -37,7 +37,7 @@ def paginaCadatro(request):
         form_preenchido = CadastroForms(request.POST)                                                           #pega todos os dados preenchidos no formulario do html e passa para a variavel form_preenchido       
     
         if form_preenchido.is_valid():                                                                          #se todos os campos preenchidos do formulario no cadastro.html forem validos seguir
-            if form_preenchido['senha_1'].value() != form_preenchido['senha_2'].value():                        #se a senha 1 nao for a senha 2 recarregar a pagina
+            if form_preenchido['senha_1'].value() != form_preenchido['senha_2'].value():                        #se a senha 1 nao for a senha 2 recarregar a pagina. ESSA VALIDACAO PODE SER FEITA TB NO PROPRIO FORMS.PY MAS DEIXEI UMA VALIDACAO AQUI SOMENTE PARA EU SABER 2 FORMAS DE VALIDAR DADOS DE UM  FORMS
                 messages.error(request,"as senhas nao sao iguais")                                              #mensagem de aviso. tem que modificar o html para receber essa mensagem
                 return redirect('cadastro')                                                                     #recarrega a pagina se as senhas nao forem iguais
 
@@ -63,3 +63,8 @@ def paginaCadatro(request):
         form = CadastroForms()                                                                                  #instanciando a variavel form com a classe CadastroForms criada no forms.py     
 
         return render(request, 'login/cadastro.html', {"form": form})                                           #enviando o form criado para o html     
+    
+def logout(request):
+    auth.logout(request)                                                                                        #comando para logar o usuario logado
+    messages.success(request, 'Usuario deslogado com sucesso')
+    return redirect('login') 
