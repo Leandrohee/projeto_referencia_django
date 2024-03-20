@@ -29,7 +29,7 @@
                     <label for="{{field.id_for_label}}">{{field.label}}</label>                                         <!--o field.label puxa automaticamente a label da input que configuramos-->
                     {{field}}                                                                                           <!--o proprio field ja eh o campo input-->
                 </div>
-            {% for error in field.erros %}                                                                              <!--mensagem de  erro criada no forms.py. Essa msg eh diferente da mensagem  feita no view.py-->
+            {% for error in field.errors %}                                                                              <!--mensagem de  erro criada no forms.py. Essa msg eh diferente da mensagem  feita no view.py-->
                 <div>
                     {{error}}
                 </div>

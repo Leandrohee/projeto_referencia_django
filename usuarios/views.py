@@ -33,6 +33,8 @@ def paginaLogin(request):
 
 def paginaCadatro(request):
     
+    form = CadastroForms()
+
     if request.method == 'POST':                                                                                #se o metodo de envio for post fazer o seguinte. esse metodo post eh setado no form do html 
         form_preenchido = CadastroForms(request.POST)                                                           #pega todos os dados preenchidos no formulario do html e passa para a variavel form_preenchido       
     
@@ -58,6 +60,9 @@ def paginaCadatro(request):
 
             messages.success(request, "Usuario criado com sucesso")                                             #mensagem de aviso. tem que modificar o html para receber essa mensagem
             return redirect('login')                                                                            #depois de salvo o usuario direcionar para a área de login. esse redirect faz referencia ao name setado nos arquivos urls.py
+        
+        else:                                                                                                   #se o formulario nao for valido seguir aqui
+            return render(request, 'login/cadastro.html', {"form": form_preenchido})                            #renderizar o cadastro novamente agora com o form atualizado com o erro
 
     if request.method == 'GET':                                                                                 #esse request.method = 'get' eh desnecessario pq ele ja eh automatico na funcao get mas coloquei pra ficar mais legivel o codigo ja que tem uma funcao post la em cima
         form = CadastroForms()                                                                                  #instanciando a variavel form com a classe CadastroForms criada no forms.py     
