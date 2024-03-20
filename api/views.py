@@ -4,6 +4,7 @@ from django.shortcuts import render,redirect                                    
 from django.http import HttpResponse                                                        #importei essa classe que eh responsavel por renderizar um html puro
 from django.contrib import messages                                                          #importando mensagens de aviso para ser utilizadas nos formularios do html
 from .models import Pedido
+from .forms import PedidoForm
 
 def renderizandoSimplesHtml(request):                                                       #fiz uma funcao que ira retornar um texto simples com html puro 
     return HttpResponse('<h1>Deu certo!!</h1><p>Aqui esta um html simples</p>')
@@ -49,3 +50,13 @@ def enviandoDadosSemDB(request):                                                
     }
     
     return render(request, 'principal/htmlsemdb.html', {"dados_enviados": dados} )           #o terceiro parametro eh referente ao dado que eu quero enviar para o html, no caso  estou enviando um dicionario aninhado
+
+def addNovoPedido(request):
+    form = PedidoForm()
+    return render(request, 'principal/adicionar-pedido.html', {"form": form})
+
+def editandoPedido(request):
+    pass
+
+def deletandoPedido(request):
+    pass

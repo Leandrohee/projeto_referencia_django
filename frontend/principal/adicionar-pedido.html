@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section class="secao-principal">
+        <nav class="menu-lateral">
+          <button class="btn-menu-lateral"><a class="link-pedido" href="{% url 'principal' %}">Home</a></button>
+        </nav>
+        <form class="formulario-add-pedido">
+          {% for field in form %}
+            <div>
+              <label>{{field.label}}</label>
+                {{field}}
+            </div>
+          {% endfor %}
+          <button type="submit">Criar novo pedido</button>
+        </form>
+      </section>
+</body>
+</html>

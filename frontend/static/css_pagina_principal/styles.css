@@ -51,8 +51,6 @@ display: flex;
 flex-direction: row;
 align-items: center;
 cursor: pointer;
-text-transform: lowercase;
-
 }
 
 .btn:hover{
@@ -62,7 +60,6 @@ transform : translateY(-0px);
 background: linear-gradient(90deg, #0066CC 0%, #8100cc 100%);
 color: #ffb300;
 border: solid 2px #0066cc;
-
 }
 
 .secao-principal{
@@ -83,7 +80,13 @@ border: solid 2px #0066cc;
 }
 
 .tabela-pedidos{
-    width: 90%;
+    width: 85%;
+}
+
+.btn-add{
+    width: 5%;
+    height: fit-content;
+    margin: 5px;
 }
 
 
@@ -156,3 +159,4 @@ border: solid 2px #0066cc;
     width: 100px;
     background-color: red;
 }
+
