@@ -1,15 +1,15 @@
 #Eh nesse arquivo que sao enviadas as informacoes para renderizacao seja em html, texto simples, json ou qualquer outra funcao
 
-from django.shortcuts import render,redirect                                                #Consigo pegar um model do Db com essa funcao
-from django.http import HttpResponse                                                        #importei essa classe que eh responsavel por renderizar um html puro
-from django.contrib import messages                                                          #importando mensagens de aviso para ser utilizadas nos formularios do html
+from django.shortcuts import render,redirect                                                            #Consigo pegar um model do Db com essa funcao
+from django.http import HttpResponse                                                                    #importei essa classe que eh responsavel por renderizar um html puro
+from django.contrib import messages                                                                     #importando mensagens de aviso para ser utilizadas nos formularios do html
 from .models import Pedido
 from .forms import PedidoForm
 
-def renderizandoSimplesHtml(request):                                                       #fiz uma funcao que ira retornar um texto simples com html puro 
+def renderizandoSimplesHtml(request):                                                                   #fiz uma funcao que ira retornar um texto simples com html puro 
     return HttpResponse('<h1>Deu certo!!</h1><p>Aqui esta um html simples</p>')
 
-def renderizandoUmArquivoHtml(request):                                                     #fiz uma funcao que ira renderizar um arquivo .html ***EH O PRINCIPAL DO PROJETO***
+def renderizandoUmArquivoHtml(request):                                                                 #fiz uma funcao que ira renderizar um arquivo .html ***EH O PRINCIPAL DO PROJETO***
     if not request.user.is_authenticated:                                                   # verifica se o usuario esta logado
         messages.error(request, "Faca o login")                                             #mensagem de aviso para fazer login         
         return redirect('login')                                                            #se nao  estiver logado redireciona para a pagina de login
@@ -18,11 +18,11 @@ def renderizandoUmArquivoHtml(request):                                         
     pedidos_organizados = Pedido.objects.order_by("pedido")                                 #filtrando os pedidos do banco de dados por numero do pedido
     return render(request, 'principal/index.html',{"pedidos_enviados": pedidos_organizados})    #para ele conseguer ler o arquivo index.html o caminho da pasta dele deve ser configurada no settings.py na aba DIRS  
 
-def renderizandoPedidosIndividuais(request,pedido_id):                                          #Esse parametro "pedido_id" tem que coincidir com o nome no url.py no path de renderizandoPedidosIndividuais
+def renderizandoPedidosIndividuais(request,pedido_id):                                                  #Esse parametro "pedido_id" tem que coincidir com o nome no url.py no path de renderizandoPedidosIndividuais
     pedido_clicado = Pedido.objects.filter(id=pedido_id).get()                                  #filtrei para condizer com o id do pedido clicado em index.html. o id foi enviado pelo index.html para a url que passou o parametro para essa funcao em pedido_id
     return render(request,'principal/pedido.html',{"pedidos_enviados": pedido_clicado})
 
-def renderizandoPaginaBuscar(request):                                                      #criei uma funcao que mostrara itens filtrados
+def renderizandoPaginaBuscar(request):                                                                  #criei uma funcao que mostrara itens filtrados
     pedidos_organizados = Pedido.objects.order_by("pedido")                                 #filtrando os pedidos do banco de dados por numero do pedido
 
     if "input-buscar" in request.GET:                                                           #se a string "input-buscar" estiver na url (requst.get puxa a url) prossiga
@@ -32,7 +32,7 @@ def renderizandoPaginaBuscar(request):                                          
 
     return render(request, 'principal/buscar.html', {"pedidos_enviados": pedidos_filtrados})    #renderiza a pagina buscar.html e envia para ela a lista dos pedidos filtrados pelo numero do pedido    
 
-def enviandoDadosSemDB(request):                                                            #essa funcao de renderizao eh somente para simular o envio de dados sem a ncessidade de um banco de dados
+def enviandoDadosSemDB(request):                                                                        #essa funcao de renderizao eh somente para simular o envio de dados sem a ncessidade de um banco de dados
     dados={                                                                                 #criei um dicionario contendo 3 dicionarios dentro para fazer o  envio  dos dados para o html
         1:{
             "nome": "leandro",
@@ -53,31 +53,14 @@ def enviandoDadosSemDB(request):                                                
 def addNovoPedido(request):
 
     if request.method == 'POST':
-        form_preenchido = PedidoForm(request.POST)
+        # pedido_preenchido = PedidoForm(request.POST)                        
+        pedido_preenchido = PedidoForm(request.POST,request.FILES)                                      #request.FILES para receber arquivos
 
-        if form_preenchido.is_valid():
-            pedido_prenchido = form_preenchido['pedido'].value()                                      
-            oficina_preenchida = form_preenchido['oficina'].value()                                     
-            os_preenchida = form_preenchido['os'].value()
-            prefixo_preenchido = form_preenchido['prefixo'] .value()
-            modelo_preenchido = form_preenchido['modelo'] .value()
-            data_do_pedido_preenchido = form_preenchido['data_do_pedido'] .value()
-
-            if Pedido.objects.filter(pedido=pedido_prenchido).exists():
-                return redirect('addNovoPedido')
-            
-            novo_pedido = Pedido.objects.create(
-                pedido = pedido_prenchido,
-                oficina = oficina_preenchida,                    
-                os = os_preenchida,
-                prefixo = prefixo_preenchido,
-                modelo =  modelo_preenchido,
-                data_do_pedido = data_do_pedido_preenchido
-            )
-
-            novo_pedido.save()
+        if pedido_preenchido.is_valid():
+            pedido_preenchido.save()                                                                    #com o modelForm so eh preciso salvar quando o formulario eh recebido, bem mais facil que no  forms de cadastrar novo usuario que temos que colocar campo por campo em uma variavel
             return redirect('principal')
-        
+        else:
+            return render(request, 'principal/adicionar-pedido.html', {"form": pedido_preenchido})
 
     
     if request.method == 'GET':
