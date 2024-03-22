@@ -68,10 +68,24 @@ def addNovoPedido(request):
         return render(request, 'principal/adicionar-pedido.html', {"form": form})
 
 def editarPedido(request,pedido_id):                                                                    #o numero pedido_id foi pego da url em urls.py e salvo nessa variavel
-    pedido_referente = Pedido.objects.get(id=pedido_id)                                                 #a funcao .get() pega um unico objeto do banco de dados ao contrario da funcao .filter() que pode pegar multiplos items do  banco de dados (queryset)
-    form_edita_pedido = PedidoForm(instance=pedido_referente)                                     #estou pegando o formulario que eu criei no forms e ja estou preenchendo ele com o objeto que eu filtrei  com o .get().
+    
+    if request.method == 'POST':                                                                        #o post sera acionado assim que eu clicar no botar editar pedido
+        pedido_referente = Pedido.objects.get(id=pedido_id)                                             #filtra o objeto com o id referente
+        pedido_alterado = PedidoForm(request.POST,instance=pedido_referente)                            #pega os dados alterados do formulario no editar-pedido.html e altera o pedido referente
+        
+        if pedido_alterado.is_valid():
+            pedido_alterado.save()
+            return redirect('principal')
+    
+    if request.method == 'GET':
+        pedido_referente = Pedido.objects.get(id=pedido_id)                                                 #a funcao .get() pega um unico objeto do banco de dados e coloca o objeto na variavel pedido_referente. a funcao .get() pega um unico objeto ao contrario da funcao .filter() que pode pegar multiplos items do  banco de dados (queryset)
+        form_edita_pedido = PedidoForm(instance=pedido_referente)                                           #estou pegando o formulario que eu criei no forms e ja estou preenchendo ele com o objeto que eu filtrei com o .get().
 
-    return render(request, 'principal/editar-pedido.html', {"form": form_edita_pedido})
+        return render(request, 'principal/editar-pedido.html', {"form": form_edita_pedido, "pedido_id": pedido_id})
 
-def deletarPedido(request):
-    pass
+def deletarPedido(request,pedido_id):
+    
+    pedido_a_ser_deletado = Pedido.objects.get(id=pedido_id)
+    pedido_a_ser_deletado.delete()
+
+    return redirect('principal')

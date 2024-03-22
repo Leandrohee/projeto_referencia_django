@@ -48,7 +48,7 @@
     </table>
     <div class="editar-pedido">
       <a class="link-pedido" href="{% url 'editarPedido' pedidos_enviados.id %}"><button  class="btn-menu-lateral">Editar</button></a>      <!--o importante aqui eh saber que quando eu clicar nesse botao sera direcionado para a url :8000/editarPedido/numerodoiddopedidoreferetne-->
-      <a class="link-pedido"><button  class="btn-menu-lateral">Deletar</button></a>
+      <a class="link-pedido" href="{% url 'deletarPedido' pedidos_enviados.id %}"><button  class="btn-menu-lateral">Deletar</button></a>
     </div>
   </section>
 </body>

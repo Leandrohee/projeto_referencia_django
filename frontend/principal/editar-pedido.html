@@ -14,14 +14,14 @@
         <nav class="menu-lateral">
           <button class="btn-menu-lateral"><a class="link-pedido" href="{% url 'principal' %}">Home</a></button>
         </nav>
-        <form class="formulario-add-pedido"  action="{% url 'addNovoPedido' %}" method="POST" enctype="multipart/form-data">   <!-- enctype="multipart/form-data"  para  enviar arquivos -->
+        <form class="formulario-add-pedido"  action="{% url 'editarPedido' pedido_id %}" method="POST" enctype="multipart/form-data">   <!-- aqui vai enviar -->
           {% csrf_token %}
           {% for field in form %}
             <div>
               <label>{{field.label}}</label>
                 {{field}}
             </div>
-          {% for error in field.errors %}                     <!--Aqui vou pegar qualquer erro que venha junto com algum input-->
+          {% for error in field.errors %}                                                                                           <!--Aqui vou pegar qualquer erro que venha junto com algum input-->
             <p class="msg-erro">{{error}}</p>
           {% endfor %}
           {% endfor %}
