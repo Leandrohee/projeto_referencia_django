@@ -19,7 +19,7 @@ def renderizandoUmArquivoHtml(request):                                         
     return render(request, 'principal/index.html',{"pedidos_enviados": pedidos_organizados})    #para ele conseguer ler o arquivo index.html o caminho da pasta dele deve ser configurada no settings.py na aba DIRS  
 
 def renderizandoPedidosIndividuais(request,pedido_id):                                                  #Esse parametro "pedido_id" tem que coincidir com o nome no url.py no path de renderizandoPedidosIndividuais
-    pedido_clicado = Pedido.objects.filter(id=pedido_id).get()                                  #filtrei para condizer com o id do pedido clicado em index.html. o id foi enviado pelo index.html para a url que passou o parametro para essa funcao em pedido_id
+    pedido_clicado = Pedido.objects.filter(id=pedido_id).get()                                          #filtrei para condizer com o id do pedido clicado em index.html. o id foi enviado pelo index.html para a url que passou o parametro para essa funcao em pedido_id
     return render(request,'principal/pedido.html',{"pedidos_enviados": pedido_clicado})
 
 def renderizandoPaginaBuscar(request):                                                                  #criei uma funcao que mostrara itens filtrados
@@ -67,8 +67,11 @@ def addNovoPedido(request):
         form = PedidoForm()
         return render(request, 'principal/adicionar-pedido.html', {"form": form})
 
-def editandoPedido(request):
-    pass
+def editarPedido(request,pedido_id):                                                                    #o numero pedido_id foi pego da url em urls.py e salvo nessa variavel
+    pedido_referente = Pedido.objects.get(id=pedido_id)                                                 #a funcao .get() pega um unico objeto do banco de dados ao contrario da funcao .filter() que pode pegar multiplos items do  banco de dados (queryset)
+    form_edita_pedido = PedidoForm(instance=pedido_referente)                                     #estou pegando o formulario que eu criei no forms e ja estou preenchendo ele com o objeto que eu filtrei  com o .get().
 
-def deletandoPedido(request):
+    return render(request, 'principal/editar-pedido.html', {"form": form_edita_pedido})
+
+def deletarPedido(request):
     pass

@@ -1,0 +1,32 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css_crud_pedido/adicionar-pedido.css' %}">
+</head>
+<body>
+    <h1>EDITAR PEDIDO</h1>
+    <section class="secao-principal">
+        <nav class="menu-lateral">
+          <button class="btn-menu-lateral"><a class="link-pedido" href="{% url 'principal' %}">Home</a></button>
+        </nav>
+        <form class="formulario-add-pedido"  action="{% url 'addNovoPedido' %}" method="POST" enctype="multipart/form-data">   <!-- enctype="multipart/form-data"  para  enviar arquivos -->
+          {% csrf_token %}
+          {% for field in form %}
+            <div>
+              <label>{{field.label}}</label>
+                {{field}}
+            </div>
+          {% for error in field.errors %}                     <!--Aqui vou pegar qualquer erro que venha junto com algum input-->
+            <p class="msg-erro">{{error}}</p>
+          {% endfor %}
+          {% endfor %}
+          <button type="submit">Editar pedido</button>
+        </form>
+      </section>
+</body>
+</html>
